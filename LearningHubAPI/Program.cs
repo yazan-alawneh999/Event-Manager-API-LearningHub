@@ -89,6 +89,16 @@ builder.Services.AddAuthentication(opt =>
 });
 
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy.AllowAnyOrigin()  // Allows any frontend
+            .AllowAnyMethod()   // Allows any HTTP method (GET, POST, etc.)
+            .AllowAnyHeader()); // Allows any headers
+
+});
+
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -99,11 +109,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 
 app.UseAuthentication(); // **IMPORTANT**: Add this to enable authentication
 app.UseAuthorization();
+
+ /*app.UseCors("AllowAngular");*/
 app.UseStaticFiles();
 app.MapControllers();
 
