@@ -22,3 +22,8 @@ appsettings.*.json/
 
 
 LearningHubAPI/appsettings.json/
+
+/Program.cs
+/appsettings.json
+/appsettings.Development.json
+
