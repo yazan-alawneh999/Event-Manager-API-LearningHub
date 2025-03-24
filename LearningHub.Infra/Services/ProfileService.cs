@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace LearningHub.Infra.Services;
 
+
 public class ProfileService: IProfileService
 {
     private readonly IProfileRepository _profileRepository;
@@ -38,5 +39,10 @@ public class ProfileService: IProfileService
     public async Task<bool> UserExistsAsync(decimal userId)
     {
        return  await _profileRepository.UserExistsAsync(userId);
+    }
+
+    public async  Task<ProfileResponse?> GetProfileByIdAsync(decimal profileId,HttpContext httpContext)
+    {
+        return await _profileRepository.GetProfileByIdAsync(profileId,httpContext);
     }
 }
