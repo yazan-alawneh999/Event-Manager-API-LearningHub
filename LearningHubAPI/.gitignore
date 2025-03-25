@@ -1,0 +1,29 @@
+﻿# Rider-specific
+.idea/
+*.sln.iml
+
+# Build outputs
+bin/
+obj/
+
+# User settings
+*.user
+*.vs/
+.vscode/
+
+# Logs and temporary files
+*.log
+logs/
+temp/
+
+# Environment & Secrets
+.env
+appsettings.*.json/
+
+
+LearningHubAPI/appsettings.json/
+
+
+/appsettings.json
+/appsettings.Development.json
+
