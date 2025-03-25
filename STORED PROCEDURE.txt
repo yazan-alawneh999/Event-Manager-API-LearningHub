@@ -1,0 +1,71 @@
+CREATE OR REPLACE PACKAGE Discount_package AS 
+    -- Create a new discount
+    PROCEDURE createDiscount
+	(
+		p_UserId IN NUMBER,
+		p_DiscountCode IN VARCHAR2, 
+		p_DiscountAmount IN NUMBER
+	);
+END Discount_package;
+/
+
+CREATE OR REPLACE PACKAGE BODY Discount_package AS 
+
+    -- Create a new discount
+    PROCEDURE createDiscount
+	(
+		p_UserId IN NUMBER,
+		p_DiscountCode IN VARCHAR2,
+		p_DiscountAmount IN NUMBER
+	)
+	AS 
+	BEGIN
+        INSERT INTO Discounts (UserId, DiscountCode, DiscountAmount)
+        VALUES (p_UserId, p_DiscountCode, p_DiscountAmount);
+        COMMIT;
+    END createDiscount;
+
+END Discount_package;
+/
+
+
+CREATE PROCEDURE SearchEvents(
+    p_startDate IN DATE DEFAULT NULL,
+    p_endDate IN DATE DEFAULT NULL,
+    p_location IN VARCHAR2 DEFAULT NULL,
+    p_category IN VARCHAR2 DEFAULT NULL,
+    p_eventStatus IN VARCHAR2 DEFAULT NULL,
+    p_eventType IN VARCHAR2 DEFAULT NULL,
+    p_cursor OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN p_cursor FOR
+    SELECT * FROM Events
+    WHERE (p_startDate IS NULL OR EventDate >= p_startDate)
+    AND (p_endDate IS NULL OR EventDate <= p_endDate)
+    AND (p_location IS NULL OR Location = p_location)
+    AND (p_category IS NULL OR Category = p_category)
+    AND (p_eventStatus IS NULL OR EventStatus = p_eventStatus)
+    AND (p_eventType IS NULL OR EventType = p_eventType,
+AND (p_category IS NULL OR "Category" = p_category)
+);
+END;
+
+
+
+CREATE PROCEDURE GetEventDetails(
+    p_eventID IN NUMBER,
+    p_cursor OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN p_cursor FOR
+    SELECT * FROM Events
+    WHERE EventID = p_eventID;
+END;
+
+
+
+
+
