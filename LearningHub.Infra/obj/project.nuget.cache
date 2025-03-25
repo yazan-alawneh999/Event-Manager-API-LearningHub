@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EcM1V5CfN+A=",
+  "dgSpecHash": "u9O6x0bPoN0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\qk-21\\Desktop\\my pranch\\New folder\\Event-Manager-API-LearningHub\\LearningHub.Infra\\LearningHub.Infra.csproj",
+  "projectFilePath": "C:\\Users\\qk-21\\Desktop\\my pranch\\EventApi\\Event-Manager-API-LearningHub\\LearningHub.Infra\\LearningHub.Infra.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\qk-21\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\qk-21\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

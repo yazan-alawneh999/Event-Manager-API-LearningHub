@@ -10,6 +10,5 @@ namespace LearningHub.Core.Common
     public interface IDbContext
     {
         DbConnection DbConnection { get; }
-       
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient; // Or any other provider namespace.
@@ -24,11 +23,7 @@ namespace LearningHub.Infra.Common
         }
 
 
-        public DbConnection DbConnection => new OracleConnection(_configuration["ConnectionStrings:DatabaseConnection"]);
-       // _connection = new OracleConnection(_configuration["ConnectionStrings:DBConnectionString"]);
-
+        public DbConnection DbConnection => new OracleConnection(_configuration.GetConnectionString("DatabaseConnection"));
+       
     }
 }
-
-
-

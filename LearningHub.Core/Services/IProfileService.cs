@@ -11,5 +11,8 @@ public interface IProfileService
     Task<CreateProfileResponse?> CreateProfile(decimal userId,ProfileDto profileDto);
 
     Task<bool> UserExistsAsync(decimal userId);
-    Task GetProfileByIdAsync(int userId);
+
+    Task<ProfileResponse?> GetProfileByIdAsync(decimal profileId,HttpContext httpContext);
+
+
 }
