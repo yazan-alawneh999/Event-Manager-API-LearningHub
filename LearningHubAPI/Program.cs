@@ -28,6 +28,8 @@ builder.Services.AddScoped<UtilService>();
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<INotificationRepository, NotificationResponsecs>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
 
 
 builder.Services.AddControllers()
