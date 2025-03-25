@@ -38,7 +38,7 @@ public class ProfileController:ControllerBase
     [Authorize]
     public async Task<IActionResult> GetProfile(int userId)
     {
-        var profile = await _profileService.GetProfileByIdAsync(userId,HttpContext);
+        var profile =  _profileService.GetProfileByIdAsync(userId);
         if (profile == null) return NotFound(); 
 
         return Ok(profile);

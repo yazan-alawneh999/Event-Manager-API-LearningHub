@@ -8,11 +8,9 @@ using LearningHub.Core.Dto;
 using LearningHub.Core.Repository;
 using LearningHub.Core.Response;
 using LearningHub.Infra.Util;
-using Microsoft.AspNetCore.Http;
 
 namespace LearningHub.Infra.Repository
 {
-    
     public class ProfileRepository : IProfileRepository
     {
         private readonly IDbContext _dbContext;
@@ -84,7 +82,7 @@ public async Task<CreateProfileResponse?> UpdateProfile(decimal userId, ProfileD
     try
     {
         // ✅ 1. Save Image and Get File Path
-        string imagePath = await _utilService.SaveImageAsync(userDto.ImageFile) ?? string.Empty;
+        string imagePath = await _utilService.SaveImageAsync(userDto.ImageFile);
 
         // ✅ 2. Update Profile Details (including ProfileImage)
         const string updateProfileSql = @"
@@ -143,29 +141,5 @@ public async Task<CreateProfileResponse?> UpdateProfile(decimal userId, ProfileD
             var count = await connection.ExecuteScalarAsync<int>(query, parameters);
             return count > 0;
         }
-
-        public async Task<ProfileResponse?> GetProfileByIdAsync(decimal userId, HttpContext httpContext)
-        {
-            await using var connection = _dbContext.DbConnection;
-    
-            string sql = @"
-    SELECT ProfileID, FirstName, LastName, City, Age, Email, PhoneNumber, ProfileImage
-    FROM Profile
-    WHERE UserId = :userId";
-
-            var profile = await connection.QueryFirstOrDefaultAsync<ProfileResponse>(sql, new { UserID = userId });
-
-            if (profile != null && !string.IsNullOrEmpty(profile.ProfileImage))
-            {
-                // ✅ Generate the Base URL dynamically from the HttpContext
-                string baseUrl = $"{httpContext.Request.Scheme}://{httpContext.Request.Host}";
-
-                // ✅ Append the public URL to ProfileImage
-                profile.ProfileImage = $"{baseUrl}/images/{profile.ProfileImage}";
-            }
-
-            return profile;
-        }
-
     }
 }

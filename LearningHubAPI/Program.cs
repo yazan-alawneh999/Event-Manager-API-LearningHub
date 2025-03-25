@@ -9,7 +9,6 @@ using LearningHub.Infra.Services;
 using LearningHub.Infra.Util;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using DbContext = LearningHub.Infra.Common.DbContext;
 
@@ -23,7 +22,9 @@ builder.Services.AddSingleton<IDbContext, DbContext>();
 builder.Services.AddScoped<IUserRepository, UserRepositoryImpl>();
 builder.Services.AddScoped<IAuthRepo, AuthRepo>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
-builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<INotificationRepository,NotificationResponsecs>();
+builder.Services.AddScoped<INotificationService,NotificationService>();
+
 builder.Services.AddScoped<UtilService>();
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
@@ -100,7 +101,6 @@ builder.Services.AddCors(options =>
 
 });
 
-
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -119,15 +119,6 @@ app.UseAuthorization();
 
  /*app.UseCors("AllowAngular");*/
 app.UseStaticFiles();
-
-var imagesPath = Path.Combine(Directory.GetCurrentDirectory(), "images");
-
-app.UseStaticFiles(new StaticFileOptions
-    
-{
-    FileProvider = new PhysicalFileProvider(imagesPath),
-    RequestPath = "/images"
-});
 app.MapControllers();
 
 app.Run();
