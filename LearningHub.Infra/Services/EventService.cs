@@ -1,4 +1,5 @@
 ﻿
+using LearningHub.Core.Dto;
 using LearningHub.Core.Response;
 using LearningHub.Core.Services;
 using LearningHub.Infra.Repository;
@@ -27,6 +28,11 @@ namespace LearningHub.Infra.Services
         public List<Event> GetAllEvent()
         {
             return _eventRepository.GetAllEvent();
+        }
+
+        public Task<List<EventWithFeedBackDto>> GetAllFeedbackInEachEvent()
+        {
+            return _eventRepository.GetAllFeedbackInEachEvent();
         }
 
         public Event getEventByID(int ID)

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
 using LearningHub.Core.Response;
+using LearningHub.Core.Dto;
 
 namespace LearningHub.Infra.Repository
 {
@@ -21,6 +22,8 @@ namespace LearningHub.Infra.Repository
         public void UpdateEvent(Event Event);
 
         public void deleteEvent(int ID);
+
+        Task <List<EventWithFeedBackDto>> GetAllFeedbackInEachEvent();
 
     }
 }

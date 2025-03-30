@@ -30,6 +30,12 @@ builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationResponsecs>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+builder.Services.AddScoped<IFavoriteService, FavoriteService>();
+builder.Services.AddScoped<IFeedbackRepository, FeedbackRepositorycs>();
+builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 
 
 builder.Services.AddControllers()

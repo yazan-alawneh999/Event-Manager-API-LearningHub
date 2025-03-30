@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LearningHub.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5de1bf10cc13ff4eefddac37ab95532695617604")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+378406a6abede555f7bedb5061bc103871f79712")]
 [assembly: System.Reflection.AssemblyProductAttribute("LearningHub.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LearningHub.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

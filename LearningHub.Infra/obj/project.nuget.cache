@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u9O6x0bPoN0=",
+  "dgSpecHash": "Awk22/JU/Dw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\qk-21\\Desktop\\my pranch\\EventApi\\Event-Manager-API-LearningHub\\LearningHub.Infra\\LearningHub.Infra.csproj",
+  "projectFilePath": "C:\\Users\\qk-21\\Desktop\\my pranch\\EventAPI\\Event-Manager-API-LearningHub\\LearningHub.Infra\\LearningHub.Infra.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\qk-21\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\qk-21\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
@@ -51,6 +51,7 @@
     "C:\\Users\\qk-21\\.nuget\\packages\\system.buffers\\4.6.0\\system.buffers.4.6.0.nupkg.sha512",
     "C:\\Users\\qk-21\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\qk-21\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
+    "C:\\Users\\qk-21\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\qk-21\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\qk-21\\.nuget\\packages\\system.diagnostics.performancecounter\\6.0.0\\system.diagnostics.performancecounter.6.0.0.nupkg.sha512",
     "C:\\Users\\qk-21\\.nuget\\packages\\system.directoryservices\\5.0.0\\system.directoryservices.5.0.0.nupkg.sha512",

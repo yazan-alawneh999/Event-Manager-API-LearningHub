@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
+using System.Diagnostics;
 using Dapper;
 using LearningHub.Core.Common;
+using LearningHub.Core.Dto;
 using LearningHub.Core.Response;
 using Microsoft.Extensions.Configuration;
 
@@ -55,6 +52,7 @@ namespace LearningHub.Infra.Repository
             return result.ToList();
         }
 
+        
         public Event getEventByID(int ID)
         {
             var p = new DynamicParameters();
@@ -82,5 +80,54 @@ namespace LearningHub.Infra.Repository
             var result = _dbContext.DbConnection.Execute(
                 "event_package.UpdateEvent", p, commandType: CommandType.StoredProcedure);
         }
+
+        public async Task<List<EventWithFeedBackDto>> GetAllFeedbackInEachEvent()
+        {
+            var query = @"
+    SELECT e.CAPACITY, e.EVENTID, e.EVENTNAME,  
+          f.FEEDBACKID, f.MESSAGE, f.RATING, f.USERID, f.FEEDBACKDATE,
+          p.USERID, p.FIRSTNAME, p.LASTNAME, p.AGE, p.PROFILEIMAGE, p.PHONENUMBER
+    FROM EVENTS e
+    INNER JOIN FEEDBACKS f ON f.EVENTID = e.EVENTID
+    INNER JOIN PROFILE p ON f.USERID = p.USERID
+    ";
+
+            var eventDictionary = new Dictionary<int, EventWithFeedBackDto>();  
+
+            var eventsWithFeedbacks = await _dbContext.DbConnection.QueryAsync<EventWithFeedBackDto, Feedback, ProfileDto, EventWithFeedBackDto>(
+                query,
+                (eventModel, feedback, profile) =>
+                {
+                    
+                    Console.WriteLine($"Event Capacity: {eventModel.CAPACITY}");
+                    
+                    
+                    if (!eventDictionary.TryGetValue((int)eventModel.EVENTID, out var eventEntry))
+                    {
+                        eventEntry = new EventWithFeedBackDto
+                        {
+                            EVENTID = eventModel.EVENTID,
+                            EventName = eventModel.EventName,
+                            CAPACITY = eventModel.CAPACITY,
+                            Feedbacks = new List<Feedback>(),
+                            ProfileDto = new List<ProfileDto>()
+                        };
+                        eventDictionary.Add((int)eventModel.EVENTID, eventEntry);  
+                    }
+
+                 
+                    eventEntry.Feedbacks.Add(feedback);
+                    eventEntry.ProfileDto.Add(profile);
+
+                    return eventEntry;
+                },
+                splitOn: "FEEDBACKID,USERID" 
+            );
+
+    
+            return eventDictionary.Values.ToList();  
+        }
+
+
     }
 }

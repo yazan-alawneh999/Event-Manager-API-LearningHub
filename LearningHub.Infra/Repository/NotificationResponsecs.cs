@@ -25,7 +25,7 @@ namespace LearningHub.Infra.Repository
             p.Add("Nuserid", notification.userId,dbType:DbType.Int32 ,direction: ParameterDirection.Input);
             p.Add("Nmessage", notification.message, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = _dbContext.DbConnection.Execute(
-            "notification_package.createnotification", p,commandType: CommandType.StoredProcedure);
+            "notification_package.CREATENOTIFICATION", p,commandType: CommandType.StoredProcedure);
 
         }
 
@@ -34,13 +34,13 @@ namespace LearningHub.Infra.Repository
             var p = new DynamicParameters();
             p.Add("Nid", ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = _dbContext.DbConnection.Execute(
-                "notification_package.deleteNotification", p, commandType: CommandType.StoredProcedure);
+                "NOTIFICATION_PACKAGE.GETALLNOTIFICATIONS", p, commandType: CommandType.StoredProcedure);
         }
 
         public List<Notification> getAllNotifications()
         {
             IEnumerable<Notification> result =_dbContext.DbConnection.Query<Notification>(
-                "notification_package.getallnotifications", commandType: CommandType.StoredProcedure);
+                "notification_package.GETALLNOTIFICATIONS", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
@@ -49,7 +49,7 @@ namespace LearningHub.Infra.Repository
             var p = new DynamicParameters();
             p.Add("Nid", ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = _dbContext.DbConnection.Query<Notification>(
-                "notification_package.getnotificationbyid", p , commandType: CommandType.StoredProcedure);
+                "notification_package.GETNOTIFICATIONBYID", p , commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
 
@@ -58,7 +58,7 @@ namespace LearningHub.Infra.Repository
             var p = new DynamicParameters();
             p.Add("Nuserid", IDuser, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = _dbContext.DbConnection.Query<Notification>(
-                "notification_package.getnotificationbyuserid", p, commandType: CommandType.StoredProcedure);
+                "notification_package.GETNOTIFICATIONBYUSERID", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
 
@@ -70,7 +70,7 @@ namespace LearningHub.Infra.Repository
             p.Add("Nmessage", notification.message, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("NCreatedAt", notification.createdAt, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             var result = _dbContext.DbConnection.Execute
-                ("notification_package.updatenotification", p,commandType:CommandType.StoredProcedure);
+                ("notification_package.UPDATENOTIFICATION", p,commandType:CommandType.StoredProcedure);
         }
     }
 }

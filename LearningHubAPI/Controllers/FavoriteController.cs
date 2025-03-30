@@ -1,5 +1,8 @@
-﻿using LearningHub.Core.Response;
+﻿using System.Security.Claims;
+using LearningHub.Core.Response;
 using LearningHub.Core.Services;
+using LearningHubAPI.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +18,8 @@ namespace LearningHubAPI.Controllers
         {
             this.favoriteService = favoriteService;
         }
-
+        [Authorize]
+        [IdentityRequiresClaims(ClaimTypes.Role, new[] { "1" })]
         [HttpGet]
         [Route("getAllFavorites")]
         public List<Favorite> getAllFavorites() 
@@ -28,7 +32,7 @@ namespace LearningHubAPI.Controllers
         {
              return favoriteService.getFavoriteByID(ID);
         }
-        [HttpGet]
+        [HttpPost]
         [Route("CreateFavorite")]
         public void CreateFavorite(Favorite favorite)
         {

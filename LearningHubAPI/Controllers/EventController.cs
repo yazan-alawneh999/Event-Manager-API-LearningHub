@@ -1,5 +1,9 @@
-﻿using LearningHub.Core.Response;
+﻿using System.Security.Claims;
+using LearningHub.Core.Dto;
+using LearningHub.Core.Response;
 using LearningHub.Core.Services;
+using LearningHubAPI.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +24,8 @@ namespace LearningHubAPI.Controllers
 
         [HttpGet]
         [Route("GetAllEvent")]
+        [Authorize]
+        [IdentityRequiresClaims(ClaimTypes.Role, new[] { "1" })]
         public List<Event> GetAllEvent() 
         {
            return eventService.GetAllEvent();
@@ -52,5 +58,27 @@ namespace LearningHubAPI.Controllers
         {
             eventService.deleteEvent(ID);   
         }
+
+
+       [HttpGet]
+[Route("GetAllFeedbackInEachEvent")]
+public async Task<IActionResult> GetAllFeedbackInEachEvent()
+{
+    try
+    {
+        var eventsWithFeedbacks = await eventService.GetAllFeedbackInEachEvent();
+
+        if (eventsWithFeedbacks == null || !eventsWithFeedbacks.Any())
+            return NotFound("No feedback found for any event.");
+
+        return Ok(eventsWithFeedbacks);
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(500, $"Internal Server Error: {ex.Message}");
+    }
+}
+
+
     }
 }

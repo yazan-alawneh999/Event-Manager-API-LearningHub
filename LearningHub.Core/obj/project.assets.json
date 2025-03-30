@@ -1832,9 +1832,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\qk-21\\Desktop\\my pranch\\EventApi\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj",
+      "projectUniqueName": "C:\\Users\\qk-21\\Desktop\\my pranch\\EventAPI\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj",
       "projectName": "LearningHub.Core",
-      "projectPath": "C:\\Users\\qk-21\\Desktop\\my pranch\\EventApi\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj",
+      "projectPath": "C:\\Users\\qk-21\\Desktop\\my pranch\\EventAPI\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj",
       "packagesPath": "C:\\Users\\qk-21\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\qk-21\\Desktop\\my pranch\\EventApi\\Event-Manager-API-LearningHub\\LearningHub.Core\\obj\\",
       "projectStyle": "PackageReference",

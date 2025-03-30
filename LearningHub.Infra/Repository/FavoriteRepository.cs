@@ -28,7 +28,7 @@ namespace LearningHub.Infra.Repository
             p.Add("Event_ID", favorite.EventID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("User_ID", favorite.UserID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = _dbContext.DbConnection.Execute(
-                "favorite_package.createFavorite", p, commandType: CommandType.StoredProcedure);
+                "FAVORITES_PACKAGE.CREATEFAVORITE", p, commandType: CommandType.StoredProcedure);
         }
 
         public void deleteFavorite(int ID)
@@ -36,13 +36,13 @@ namespace LearningHub.Infra.Repository
             var p = new DynamicParameters();
             p.Add("Fav_ID", ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = _dbContext.DbConnection.Execute(
-                "favorite_package.deleteFavorite", p, commandType: CommandType.StoredProcedure);
+                "FAVORITES_PACKAGE.DELETEFAVORITE", p, commandType: CommandType.StoredProcedure);
         }
 
         public List<Favorite> getAllFavorites()
         {
             IEnumerable<Favorite> result = _dbContext.DbConnection.Query<Favorite>(
-                "favorite_package.getallfavorites", commandType:CommandType.StoredProcedure);
+                "Favorites_package.GETALLFAVORITES", commandType:CommandType.StoredProcedure);
             return result.ToList();
         }
 
@@ -52,7 +52,7 @@ namespace LearningHub.Infra.Repository
             var p = new DynamicParameters();
              p.Add("Fav_ID", ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = _dbContext.DbConnection.Query<Favorite>(
-                "favorite_package.getFavoriteByID", p, commandType: CommandType.StoredProcedure);
+                "FAVORITES_PACKAGE.GETFAVORITEBYID", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
 
@@ -63,7 +63,7 @@ namespace LearningHub.Infra.Repository
             p.Add("Event_ID", favorite.EventID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("User_ID", favorite.UserID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = _dbContext.DbConnection.Execute(
-                "favorite_package.updateFavorite", p, commandType: CommandType.StoredProcedure);    
+                "FAVORITES_PACKAGE.UPDATEFAVORITE", p, commandType: CommandType.StoredProcedure);    
         }
     }
 }
