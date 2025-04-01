@@ -36,7 +36,7 @@ namespace LearningHub.Infra.Services
             return _notificationRepository.getNotificationByID(ID);
         }
 
-        public Notification getNotificationByUserID(int IDuser)
+        public List<Notification> getNotificationByUserID(int IDuser)
         {
             return _notificationRepository.getNotificationByUserID(IDuser);
         }

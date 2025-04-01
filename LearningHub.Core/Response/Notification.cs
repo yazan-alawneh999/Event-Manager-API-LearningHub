@@ -8,7 +8,7 @@ namespace LearningHub.Core.Response
 {
       public class Notification
       {
-        public decimal ID { get; set; }
+        public decimal NOTIFICATIONID { get; set; }
         public decimal userId { get; set; }
         public string message { get; set; } 
         public  DateTime createdAt{ get; set; }

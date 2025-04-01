@@ -36,7 +36,8 @@ builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
 builder.Services.AddScoped<IFavoriteService, FavoriteService>();
 builder.Services.AddScoped<IFeedbackRepository, FeedbackRepositorycs>();
 builder.Services.AddScoped<IFeedbackService, FeedbackService>();
-
+builder.Services.AddScoped<ILocationRepository, LocationRepository>();
+builder.Services.AddScoped<ILocationService, LocationService>();
 
 builder.Services.AddControllers()
     .AddNewtonsoftJson(options =>

@@ -14,7 +14,7 @@ namespace LearningHub.Core.Repository
 
         public List<Notification> getAllNotifications();
         public Notification getNotificationByID(int ID);
-        public Notification getNotificationByUserID(int IDuser);
+        public List<Notification> getNotificationByUserID(int IDuser);
 
         public void CreateNotification(Notification notification);
         public void UpdateNotification(Notification notification);

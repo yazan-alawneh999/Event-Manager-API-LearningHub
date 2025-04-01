@@ -30,8 +30,8 @@ namespace LearningHubAPI.Controllers
             return _notificationService.getNotificationByID(ID);    
         }
         [HttpGet]
-        [Route("getNotificationByUserID/{ID}")]
-        public Notification getNotificationByUserID(int IDuser)
+        [Route("getNotificationByUserID/{IDuser}")]
+        public List<Notification> getNotificationByUserID(int IDuser)
         {
             return _notificationService.getNotificationByUserID(IDuser);
         }
@@ -51,9 +51,9 @@ namespace LearningHubAPI.Controllers
 
         [HttpDelete]
         [Route("deleteNotification/{id}")]
-        public void deleteNotification(int ID)
+        public void deleteNotification(int id)
         {
-            _notificationService.deleteNotification(ID);
+            _notificationService.deleteNotification(id);
         }
     }
 }

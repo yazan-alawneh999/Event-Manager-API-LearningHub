@@ -34,17 +34,18 @@ namespace LearningHub.Infra.Repository
             var p = new DynamicParameters();
             p.Add("Nid", ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = _dbContext.DbConnection.Execute(
-                "NOTIFICATION_PACKAGE.GETALLNOTIFICATIONS", p, commandType: CommandType.StoredProcedure);
+                "NOTIFICATION_PACKAGE.DELETENOTIFICATION", p, commandType: CommandType.StoredProcedure);
         }
 
         public List<Notification> getAllNotifications()
         {
-            IEnumerable<Notification> result =_dbContext.DbConnection.Query<Notification>(
-                "notification_package.GETALLNOTIFICATIONS", commandType: CommandType.StoredProcedure);
+             var result = _dbContext.DbConnection.Query<Notification>(
+                          "notification_package.GETALLNOTIFICATIONS",commandType: CommandType.StoredProcedure );
+
             return result.ToList();
         }
 
-        public Notification getNotificationByID(int ID)
+        public  Notification getNotificationByID(int ID)
         {
             var p = new DynamicParameters();
             p.Add("Nid", ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
@@ -53,24 +54,24 @@ namespace LearningHub.Infra.Repository
             return result.FirstOrDefault();
         }
 
-        public Notification getNotificationByUserID(int IDuser)
+        public List<Notification> getNotificationByUserID(int IDuser)
         {
             var p = new DynamicParameters();
             p.Add("Nuserid", IDuser, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = _dbContext.DbConnection.Query<Notification>(
-                "notification_package.GETNOTIFICATIONBYUSERID", p, commandType: CommandType.StoredProcedure);
-            return result.FirstOrDefault();
+                "NOTIFICATION_PACKAGE.GETNOTIFICATIONBYUSERID", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
         }
 
         public void UpdateNotification(Notification notification)
         {
             var p = new DynamicParameters();
-            p.Add("Nid", notification.ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Nid", notification.NOTIFICATIONID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("Nuserid", notification.userId, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("Nmessage", notification.message, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("NCreatedAt", notification.createdAt, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             var result = _dbContext.DbConnection.Execute
-                ("notification_package.UPDATENOTIFICATION", p,commandType:CommandType.StoredProcedure);
+            ("notification_package.UPDATENOTIFICATION", p,commandType:CommandType.StoredProcedure);
         }
     }
 }
