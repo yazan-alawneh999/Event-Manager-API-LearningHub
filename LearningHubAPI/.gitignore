@@ -18,4 +18,12 @@ temp/
 
 # Environment & Secrets
 .env
-appsettings.*.json
+appsettings.*.json/
+
+
+LearningHubAPI/appsettings.json/
+
+
+/appsettings.json
+/appsettings.Development.json
+

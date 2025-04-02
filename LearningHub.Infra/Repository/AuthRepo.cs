@@ -8,7 +8,9 @@ using LearningHub.Core.Dto;
 
 using LearningHub.Core.Repository;
 using LearningHub.Core.Response;
+using LearningHub.Infra.Util;
 using LearningHubAPI.Requests;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Oracle.ManagedDataAccess.Client;
@@ -22,12 +24,14 @@ namespace LearningHub.Infra.Repository
       
         private readonly IConfiguration _configuration;
         private readonly IDbContext _dbContext; // Use DbContext here
+        private  UtilService _utilService;
 
-        public AuthRepo(IUserRepository userRepository, IConfiguration configuration, IDbContext dbContext)
+        public AuthRepo(UtilService util, IConfiguration configuration, IDbContext dbContext)
         {
         
             _configuration = configuration;
             _dbContext = dbContext; // Inject and assign DbContext
+            _utilService = util;
         }
 
         public async Task<LoginResponse?> Login(string username, string password)
@@ -96,13 +100,31 @@ namespace LearningHub.Infra.Repository
 
         public async Task<List<User>> GetAllUsersAsync()
         {
-           await using var connection = _dbContext.DbConnection;
-           var sql = @"SELECT * FROM Users";
-           return  connection.QueryAsync<User>(sql).Result.ToList();
+            await using var connection = _dbContext.DbConnection;
+
+            var users = await connection.QueryAsync(
+                @"SELECT 
+                            u.UserID, u.Username, u.PasswordHash,u.LastLogin as CreateAt,
+                            p.ProfileID, p.ProfileImage,  
+                            r.RoleID AS RoleId, r.RoleName     
+                            FROM Users u
+                            LEFT JOIN Roles r ON u.RoleID = r.RoleID
+                            LEFT JOIN Profile p ON u.UserID = p.UserID",
+                
+                (User user, RoleDto role) =>
+                {
+                    user.ProfileImage = _utilService.GetProfileImageUrl(user.ProfileImage);
+                    user.Role = role; 
+                    return user;
+                },
+                splitOn: "RoleID" 
+            );
+
+            return users.ToList();
            
         }
 
-        public async Task<User?> ValidateUserAsync(string username, string password)
+        public async Task<User> ValidateUserAsync(string username, string password)
         {
             await using var connection = _dbContext.DbConnection;
             
