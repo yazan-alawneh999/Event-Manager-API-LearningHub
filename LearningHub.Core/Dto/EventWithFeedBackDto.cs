@@ -13,8 +13,10 @@ namespace LearningHub.Core.Dto
     {
         public decimal EVENTID  { get; set; }
         public string EventName { get; set; }
-      
+        public double RATING { get; set; }
         public double CAPACITY { get; set; }
+
+
 
         public List<Feedback> Feedbacks { get; set; } = new List<Feedback>();
         public List<ProfileDto> ProfileDto { get; set; } = new List<ProfileDto>();

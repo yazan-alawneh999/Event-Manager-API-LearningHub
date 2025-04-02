@@ -52,7 +52,13 @@ namespace LearningHub.Infra.Repository
             return result.ToList();
         }
 
-        
+        public async Task<List<EventWithFeedBackDto>> GetAllFeedbackInEachEvent()
+        {
+            IEnumerable<EventWithFeedBackDto> result = _dbContext.DbConnection.Query<EventWithFeedBackDto>
+                ("event_package.getAllEventWithFeedback", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
         public Event getEventByID(int ID)
         {
             var p = new DynamicParameters();
@@ -81,52 +87,116 @@ namespace LearningHub.Infra.Repository
                 "event_package.UpdateEvent", p, commandType: CommandType.StoredProcedure);
         }
 
-        public async Task<List<EventWithFeedBackDto>> GetAllFeedbackInEachEvent()
-        {
-            var query = @"
-    SELECT e.CAPACITY, e.EVENTID, e.EVENTNAME,  
-          f.FEEDBACKID, f.MESSAGE, f.RATING, f.USERID, f.FEEDBACKDATE,
-          p.USERID, p.FIRSTNAME, p.LASTNAME, p.AGE, p.PROFILEIMAGE, p.PHONENUMBER
-    FROM EVENTS e
-    INNER JOIN FEEDBACKS f ON f.EVENTID = e.EVENTID
-    INNER JOIN PROFILE p ON f.USERID = p.USERID
-    ";
+        //public async Task<List<EventWithFeedBackDto>> GetAllFeedbackInEachEvent()
+        //{
+        //    var query = @"
+        //SELECT e.CAPACITY, e.EVENTID, e.EVENTNAME,  
+        //      f.FEEDBACKID, f.MESSAGE, f.RATING, f.USERID, f.FEEDBACKDATE,
+        //      p.USERID, p.FIRSTNAME, p.LASTNAME, p.AGE, p.PROFILEIMAGE, p.PHONENUMBER 
+        //FROM EVENTS e
+        //INNER JOIN FEEDBACKS f ON f.EVENTID = e.EVENTID
+        //INNER JOIN PROFILE p ON f.USERID = p.USERID
+        //";
 
-            var eventDictionary = new Dictionary<int, EventWithFeedBackDto>();  
+        //    var eventDictionary = new Dictionary<int, EventWithFeedBackDto>();
 
-            var eventsWithFeedbacks = await _dbContext.DbConnection.QueryAsync<EventWithFeedBackDto, Feedback, ProfileDto, EventWithFeedBackDto>(
-                query,
-                (eventModel, feedback, profile) =>
-                {
-                    
-                    Console.WriteLine($"Event Capacity: {eventModel.CAPACITY}");
-                    
-                    
-                    if (!eventDictionary.TryGetValue((int)eventModel.EVENTID, out var eventEntry))
-                    {
-                        eventEntry = new EventWithFeedBackDto
-                        {
-                            EVENTID = eventModel.EVENTID,
-                            EventName = eventModel.EventName,
-                            CAPACITY = eventModel.CAPACITY,
-                            Feedbacks = new List<Feedback>(),
-                            ProfileDto = new List<ProfileDto>()
-                        };
-                        eventDictionary.Add((int)eventModel.EVENTID, eventEntry);  
-                    }
+        //    var eventsWithFeedbacks = await _dbContext.DbConnection.QueryAsync<EventWithFeedBackDto, Feedback, ProfileDto, EventWithFeedBackDto>(
+        //        query,
+        //        (eventModel, feedback, profile) =>
+        //        {
 
-                 
-                    eventEntry.Feedbacks.Add(feedback);
-                    eventEntry.ProfileDto.Add(profile);
+        //            Console.WriteLine($"Event Capacity: {eventModel.CAPACITY}");
 
-                    return eventEntry;
-                },
-                splitOn: "FEEDBACKID,USERID" 
-            );
 
-    
-            return eventDictionary.Values.ToList();  
-        }
+        //            if (!eventDictionary.TryGetValue((int)eventModel.EVENTID, out var eventEntry))
+        //            {
+        //                eventEntry = new EventWithFeedBackDto
+        //                {
+        //                    EVENTID = eventModel.EVENTID,
+        //                    EventName = eventModel.EventName,
+        //                    CAPACITY = eventModel.CAPACITY,
+        //                    Feedbacks = new List<Feedback>(),
+        //                    ProfileDto = new List<ProfileDto>()
+        //                };
+        //                eventDictionary.Add((int)eventModel.EVENTID, eventEntry);
+        //            }
+
+
+        //            eventEntry.Feedbacks.Add(feedback);
+        //            eventEntry.ProfileDto.Add(profile);
+
+        //            return eventEntry;
+        //        },
+        //                        splitOn: "FEEDBACKID,USERID"
+        //                    );
+
+
+        //    return eventDictionary.Values.ToList();
+        //}
+
+
+        //public async Task<List<EventWithFeedBackDto>> GetAllFeedbackInEachEvent()
+        //{
+        //    var query = @"  
+        //SELECT 
+        //    e.CAPACITY, 
+        //    e.EVENTID, 
+        //    e.EVENTNAME,  
+        //    f.FEEDBACKID, 
+        //    f.MESSAGE, 
+        //    f.RATING, 
+        //    f.USERID AS FeedbackUserID, 
+        //    f.FEEDBACKDATE,   
+        //    p.USERID AS ProfileUserID, 
+        //    p.FIRSTNAME, 
+        //    p.LASTNAME, 
+        //    p.AGE, 
+        //    p.PROFILEIMAGE, 
+        //    p.PHONENUMBER,
+        //    (SELECT AVG(f2.RATING) FROM FEEDBACKS f2 WHERE f2.EVENTID = e.EVENTID)
+        //FROM EVENTS e
+        //INNER JOIN FEEDBACKS f ON f.EVENTID = e.EVENTID
+        //INNER JOIN PROFILE p ON f.USERID = p.USERID;
+        //";
+
+        //    var eventDictionary = new Dictionary<int, EventWithFeedBackDto>();
+
+        //    var eventsWithFeedbacks = await _dbContext.DbConnection.QueryAsync<EventWithFeedBackDto, Feedback, ProfileDto, EventWithFeedBackDto>(
+        //        query,
+        //        (eventModel, feedback, profile) =>
+        //        {
+        //            if (!eventDictionary.TryGetValue((int)eventModel.EVENTID, out var eventEntry))
+        //            {
+        //                eventEntry = new EventWithFeedBackDto
+        //                {
+        //                    EVENTID = eventModel.EVENTID,
+        //                    EventName = eventModel.EventName,
+        //                    CAPACITY = eventModel.CAPACITY,
+        //                    AvaRating = eventModel.AvaRating,
+        //                    Feedbacks = new List<Feedback>(),
+        //                    ProfileDto = new List<ProfileDto>()
+        //                };
+        //                eventDictionary.Add((int)eventModel.EVENTID, eventEntry);
+        //            }
+
+        //            if (!eventEntry.Feedbacks.Any(f => f.FeedbackID == feedback.FeedbackID))
+        //            {
+        //                eventEntry.Feedbacks.Add(feedback);
+        //            }
+
+        //            if (!eventEntry.ProfileDto.Any(p => p.USERID == profile.USERID))
+        //            {
+        //                eventEntry.ProfileDto.Add(profile);
+        //            }
+
+        //            return eventEntry;
+        //        },
+        //        splitOn: "FEEDBACKID,ProfileUserID"  // ✅ تم التعديل هنا
+        //    );
+
+        //    return eventDictionary.Values.ToList();
+        //}
+
 
 
     }
