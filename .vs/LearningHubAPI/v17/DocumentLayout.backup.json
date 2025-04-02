@@ -1,7 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\qk-21\\Desktop\\Event-Manager-API-LearningHub\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4D5E1A93-B245-433F-B092-C0A9600D95A9}|LearningHubAPI\\LearningHubAPI.csproj|c:\\users\\qk-21\\desktop\\my pranch\\event-manager-api-learninghub\\learninghubapi\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{4D5E1A93-B245-433F-B092-C0A9600D95A9}|LearningHubAPI\\LearningHubAPI.csproj|solutionrelative:learninghubapi\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,8 +14,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHubAPI\\.gitignore",
+              "RelativeDocumentMoniker": "LearningHubAPI\\.gitignore",
+              "ToolTip": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHubAPI\\.gitignore",
+              "RelativeToolTip": "LearningHubAPI\\.gitignore",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAgwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-02T19:27:35.174Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
