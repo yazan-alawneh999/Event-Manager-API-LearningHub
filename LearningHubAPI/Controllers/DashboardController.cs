@@ -15,11 +15,13 @@ public class DashboardController:ControllerBase
     
     private readonly IAuthRepo _authRepo;
     private readonly IDashboardService _dashboardService;
+    private readonly IProfileRepository _profileRepository;
 
-    public DashboardController(IAuthRepo authRepo,IDashboardService dashboardService)
+    public DashboardController(IAuthRepo authRepo,IDashboardService dashboardService,IProfileRepository profileRepository)
     {
         _authRepo = authRepo;
         _dashboardService = dashboardService;
+        _profileRepository = profileRepository;
 
         
     }
@@ -40,20 +42,33 @@ public class DashboardController:ControllerBase
         return Ok(await _dashboardService.GetRoles());
     }
 
-    [HttpPut("UpdateUser/{userId}")]
-    [Authorize]
-    [IdentityRequiresClaims(ClaimTypes.Role, new[] { "1" })]
-    public async Task<IActionResult> UpdateUser([FromRoute] decimal userId ,[FromBody] UpdateUserProfileDto dto)
+    [HttpPut("UpdateProfile/{userId}")]
+    [Authorize] // logged in 
+    [IdentityRequiresClaims(ClaimTypes.Role, new[] { "1" })] // 1 admin ,2 org , 3 user 
+    public async Task<IActionResult> UpdateProfile([FromRoute] decimal userId ,[FromForm]  ProfileDto dto)
     {
         if (!await _authRepo.UserExistsAsync(userId))
         {
             return NotFound("User not found");
         }
-        if (! await _dashboardService.UpdateUserAsync(userId, dto))
+       
+        return Ok(await _profileRepository.UpdateProfile(userId, dto));
+
+        
+    }
+    
+    
+    [HttpPut("UpdateUser/{userId}")]
+    [Authorize] // logged in 
+    [IdentityRequiresClaims(ClaimTypes.Role, new[] { "1" })] // 1 admin ,2 org , 3 user 
+    public async Task<IActionResult> UpdateUser([FromRoute] int userId ,[FromBody]  UpdateUserDto dto)
+    {
+        if (!await _authRepo.UserExistsAsync(userId))
         {
-            return  BadRequest("Failed to update user");
+            return NotFound("User not found");
         }
-        return Ok("user updated successfully");
+       
+        return Ok(await _dashboardService.UpdateUserAsync(userId, dto));
 
         
     }
