@@ -9,6 +9,7 @@ using LearningHub.Infra.Services;
 using LearningHub.Infra.Util;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using DbContext = LearningHub.Infra.Common.DbContext;
 
@@ -22,12 +23,21 @@ builder.Services.AddSingleton<IDbContext, DbContext>();
 builder.Services.AddScoped<IUserRepository, UserRepositoryImpl>();
 builder.Services.AddScoped<IAuthRepo, AuthRepo>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
-
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<UtilService>();
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
-
+builder.Services.AddScoped<INotificationRepository, NotificationResponsecs>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+builder.Services.AddScoped<IFavoriteService, FavoriteService>();
+builder.Services.AddScoped<IFeedbackRepository, FeedbackRepositorycs>();
+builder.Services.AddScoped<IFeedbackService, FeedbackService>();
+builder.Services.AddScoped<ILocationRepository, LocationRepository>();
+builder.Services.AddScoped<ILocationService, LocationService>();
 
 builder.Services.AddControllers()
     .AddNewtonsoftJson(options =>
@@ -89,6 +99,17 @@ builder.Services.AddAuthentication(opt =>
 });
 
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy.AllowAnyOrigin()  // Allows any frontend
+            .AllowAnyMethod()   // Allows any HTTP method (GET, POST, etc.)
+            .AllowAnyHeader()); // Allows any headers
+
+});
+
+
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -99,12 +120,23 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 
 app.UseAuthentication(); // **IMPORTANT**: Add this to enable authentication
 app.UseAuthorization();
+
+ /*app.UseCors("AllowAngular");*/
 app.UseStaticFiles();
+
+var imagesPath = Path.Combine(Directory.GetCurrentDirectory(), "images");
+
+app.UseStaticFiles(new StaticFileOptions
+    
+{
+    FileProvider = new PhysicalFileProvider(imagesPath),
+    RequestPath = "/images"
+});
 app.MapControllers();
 
 app.Run();

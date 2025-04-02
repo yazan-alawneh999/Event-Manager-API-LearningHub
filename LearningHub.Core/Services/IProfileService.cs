@@ -12,5 +12,7 @@ public interface IProfileService
 
     Task<bool> UserExistsAsync(decimal userId);
 
+    Task<ProfileResponse?> GetProfileByIdAsync(decimal profileId,HttpContext httpContext);
+
 
 }

@@ -9,6 +9,8 @@ public interface IProfileRepository
     Task<CreateProfileResponse?> CreateProfile(decimal userId, ProfileDto profileDto);
     Task<CreateProfileResponse?> UpdateProfile(decimal userId, ProfileDto profileDto);
      Task<bool> UserExistsAsync(decimal userId);
-     
-     
+
+     Task<ProfileResponse?> GetProfileByIdAsync(decimal profileId,HttpContext httpContext);
+
+
 }

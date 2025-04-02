@@ -19,7 +19,7 @@ public class ProfileController:ControllerBase
         _profileService = profileService;
     }
 
-    [HttpPost("{userId}/profile/create")]
+    [HttpPost("create-profile/{userId}")]
     [Authorize]
     
     public async Task<IActionResult> CreateProfile(decimal userId,[FromForm] ProfileDto profileDto)
@@ -33,4 +33,15 @@ public class ProfileController:ControllerBase
 
         return Ok(await _profileService.CreateProfile(userId, profileDto));
     }
+    
+    [HttpGet("profile-details/{userId}")]
+    [Authorize]
+    public async Task<IActionResult> GetProfile(int userId)
+    {
+        var profile = await _profileService.GetProfileByIdAsync(userId,HttpContext);
+        if (profile == null) return NotFound(); 
+
+        return Ok(profile);
+    }
+
 }
