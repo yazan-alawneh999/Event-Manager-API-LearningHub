@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ujTmRg1hC3U=",
+  "dgSpecHash": "WZFixL4OGhc=",
   "success": true,
   "projectFilePath": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,7 @@
     "C:\\Users\\qk-21\\.nuget\\packages\\microsoft.net.http.headers\\2.3.0\\microsoft.net.http.headers.2.3.0.nupkg.sha512",
     "C:\\Users\\qk-21\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.4\\microsoft.netcore.platforms.5.0.4.nupkg.sha512",
     "C:\\Users\\qk-21\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\qk-21\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\qk-21\\.nuget\\packages\\oracle.entityframeworkcore\\6.21.4\\oracle.entityframeworkcore.6.21.4.nupkg.sha512",
     "C:\\Users\\qk-21\\.nuget\\packages\\oracle.manageddataaccess.core\\3.21.41\\oracle.manageddataaccess.core.3.21.41.nupkg.sha512",
     "C:\\Users\\qk-21\\.nuget\\packages\\system.buffers\\4.6.0\\system.buffers.4.6.0.nupkg.sha512",

@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4D5E1A93-B245-433F-B092-C0A9600D95A9}|LearningHubAPI\\LearningHubAPI.csproj|c:\\users\\qk-21\\desktop\\my pranch\\event-manager-api-learninghub\\learninghubapi\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{4D5E1A93-B245-433F-B092-C0A9600D95A9}|LearningHubAPI\\LearningHubAPI.csproj|solutionrelative:learninghubapi\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{819E00DE-7EF7-4FED-9D26-4B71340C5013}|LearningHub.Core\\LearningHub.Core.csproj|c:\\users\\qk-21\\desktop\\my pranch\\event-manager-api-learninghub\\learninghub.core\\dto\\eventwithfeedbackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{819E00DE-7EF7-4FED-9D26-4B71340C5013}|LearningHub.Core\\LearningHub.Core.csproj|solutionrelative:learninghub.core\\dto\\eventwithfeedbackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F37504B-E9C2-4A29-BB65-5F03B3E32ECC}|LearningHub.Infra\\LearningHub.Infra.csproj|c:\\users\\qk-21\\desktop\\my pranch\\event-manager-api-learninghub\\learninghub.infra\\repository\\eventrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F37504B-E9C2-4A29-BB65-5F03B3E32ECC}|LearningHub.Infra\\LearningHub.Infra.csproj|solutionrelative:learninghub.infra\\repository\\eventrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHubAPI\\.gitignore",
-              "RelativeDocumentMoniker": "LearningHubAPI\\.gitignore",
-              "ToolTip": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHubAPI\\.gitignore",
-              "RelativeToolTip": "LearningHubAPI\\.gitignore",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAgwB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-04-02T19:27:35.174Z",
+              "Title": "EventWithFeedBackDto.cs",
+              "DocumentMoniker": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Core\\Dto\\EventWithFeedBackDto.cs",
+              "RelativeDocumentMoniker": "LearningHub.Core\\Dto\\EventWithFeedBackDto.cs",
+              "ToolTip": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Core\\Dto\\EventWithFeedBackDto.cs",
+              "RelativeToolTip": "LearningHub.Core\\Dto\\EventWithFeedBackDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T23:47:22.148Z",
               "EditorCaption": ""
             },
             {
@@ -44,6 +48,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EventRepository.cs",
+              "DocumentMoniker": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Infra\\Repository\\EventRepository.cs",
+              "RelativeDocumentMoniker": "LearningHub.Infra\\Repository\\EventRepository.cs",
+              "ToolTip": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Infra\\Repository\\EventRepository.cs",
+              "RelativeToolTip": "LearningHub.Infra\\Repository\\EventRepository.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAmwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T22:52:23.333Z",
+              "EditorCaption": ""
             }
           ]
         }
