@@ -3,6 +3,13 @@
   "WorkspaceRootPath": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4D5E1A93-B245-433F-B092-C0A9600D95A9}|LearningHubAPI\\LearningHubAPI.csproj|c:\\users\\qk-21\\desktop\\my pranch\\event-manager-api-learninghub\\learninghubapi\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D5E1A93-B245-433F-B092-C0A9600D95A9}|LearningHubAPI\\LearningHubAPI.csproj|solutionrelative:learninghubapi\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Event-Manager-API-LearningHub\\LearningHub.Core\\Dto\\UserForUpdateDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{819E00DE-7EF7-4FED-9D26-4B71340C5013}|LearningHub.Core\\LearningHub.Core.csproj|c:\\users\\qk-21\\desktop\\my pranch\\event-manager-api-learninghub\\learninghub.core\\dto\\eventwithfeedbackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{819E00DE-7EF7-4FED-9D26-4B71340C5013}|LearningHub.Core\\LearningHub.Core.csproj|solutionrelative:learninghub.core\\dto\\eventwithfeedbackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,7 +25,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,20 +45,44 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserForUpdateDto.cs",
+              "DocumentMoniker": "E:\\Event-Manager-API-LearningHub\\LearningHub.Core\\Dto\\UserForUpdateDto.cs",
+              "ToolTip": "E:\\Event-Manager-API-LearningHub\\LearningHub.Core\\Dto\\UserForUpdateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T00:01:05.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHubAPI\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "LearningHubAPI\\Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHubAPI\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "LearningHubAPI\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAiwD4AAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T23:57:50.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "EventWithFeedBackDto.cs",
               "DocumentMoniker": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Core\\Dto\\EventWithFeedBackDto.cs",
               "RelativeDocumentMoniker": "LearningHub.Core\\Dto\\EventWithFeedBackDto.cs",
               "ToolTip": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Core\\Dto\\EventWithFeedBackDto.cs",
               "RelativeToolTip": "LearningHub.Core\\Dto\\EventWithFeedBackDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAA/wBYAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T23:47:22.148Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "EventRepository.cs",
               "DocumentMoniker": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Infra\\Repository\\EventRepository.cs",
               "RelativeDocumentMoniker": "LearningHub.Infra\\Repository\\EventRepository.cs",
@@ -59,8 +90,7 @@
               "RelativeToolTip": "LearningHub.Infra\\Repository\\EventRepository.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAmwDUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T22:52:23.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T22:52:23.333Z"
             }
           ]
         }
