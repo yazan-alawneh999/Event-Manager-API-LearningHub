@@ -21,7 +21,7 @@ public class IdentityRequiresClaims: Attribute,IAuthorizationFilter
         var user = context.HttpContext.User;
         if (!_claimvalue.Any(v=>user.HasClaim(_claimName,v)))
         {
-            context.Result= new ForbidResult();
+            context.Result= new ForbidResult("not allowed to access");
 
         }
 

@@ -135,68 +135,6 @@ namespace LearningHub.Infra.Repository
         //}
 
 
-        //public async Task<List<EventWithFeedBackDto>> GetAllFeedbackInEachEvent()
-        //{
-        //    var query = @"  
-        //SELECT 
-        //    e.CAPACITY, 
-        //    e.EVENTID, 
-        //    e.EVENTNAME,  
-        //    f.FEEDBACKID, 
-        //    f.MESSAGE, 
-        //    f.RATING, 
-        //    f.USERID AS FeedbackUserID, 
-        //    f.FEEDBACKDATE,   
-        //    p.USERID AS ProfileUserID, 
-        //    p.FIRSTNAME, 
-        //    p.LASTNAME, 
-        //    p.AGE, 
-        //    p.PROFILEIMAGE, 
-        //    p.PHONENUMBER,
-        //    (SELECT AVG(f2.RATING) FROM FEEDBACKS f2 WHERE f2.EVENTID = e.EVENTID)
-        //FROM EVENTS e
-        //INNER JOIN FEEDBACKS f ON f.EVENTID = e.EVENTID
-        //INNER JOIN PROFILE p ON f.USERID = p.USERID;
-        //";
-
-        //    var eventDictionary = new Dictionary<int, EventWithFeedBackDto>();
-
-        //    var eventsWithFeedbacks = await _dbContext.DbConnection.QueryAsync<EventWithFeedBackDto, Feedback, ProfileDto, EventWithFeedBackDto>(
-        //        query,
-        //        (eventModel, feedback, profile) =>
-        //        {
-        //            if (!eventDictionary.TryGetValue((int)eventModel.EVENTID, out var eventEntry))
-        //            {
-        //                eventEntry = new EventWithFeedBackDto
-        //                {
-        //                    EVENTID = eventModel.EVENTID,
-        //                    EventName = eventModel.EventName,
-        //                    CAPACITY = eventModel.CAPACITY,
-        //                    AvaRating = eventModel.AvaRating,
-        //                    Feedbacks = new List<Feedback>(),
-        //                    ProfileDto = new List<ProfileDto>()
-        //                };
-        //                eventDictionary.Add((int)eventModel.EVENTID, eventEntry);
-        //            }
-
-        //            if (!eventEntry.Feedbacks.Any(f => f.FeedbackID == feedback.FeedbackID))
-        //            {
-        //                eventEntry.Feedbacks.Add(feedback);
-        //            }
-
-        //            if (!eventEntry.ProfileDto.Any(p => p.USERID == profile.USERID))
-        //            {
-        //                eventEntry.ProfileDto.Add(profile);
-        //            }
-
-        //            return eventEntry;
-        //        },
-        //        splitOn: "FEEDBACKID,ProfileUserID"  // ✅ تم التعديل هنا
-        //    );
-
-        //    return eventDictionary.Values.ToList();
-        //}
-
 
 
     }
