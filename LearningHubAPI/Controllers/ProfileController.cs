@@ -21,6 +21,7 @@ public class ProfileController:ControllerBase
 
     [HttpPost("create-profile/{userId}")]
     [Authorize]
+    
     public async Task<IActionResult> CreateProfile(decimal userId,[FromForm] ProfileDto profileDto)
     {
         if (!await _profileService.UserExistsAsync(userId))
