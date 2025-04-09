@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LearningHub.Infra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f832e0490bfa9af9e28ab16545c4b1eb58faf56f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e9272b87e685f62f39dae070abb0b0285d2f9ed")]
 [assembly: System.Reflection.AssemblyProductAttribute("LearningHub.Infra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LearningHub.Infra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
