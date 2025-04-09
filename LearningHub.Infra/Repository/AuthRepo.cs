@@ -110,6 +110,7 @@ namespace LearningHub.Infra.Repository
                             FROM Users u
                             LEFT JOIN Roles r ON u.RoleID = r.RoleID
                             LEFT JOIN Profile p ON u.UserID = p.UserID",
+            
                 
                 (user, role) =>
                 {
@@ -121,6 +122,9 @@ namespace LearningHub.Infra.Repository
             );
 
             return users.ToList();
+            
+            
+            
            
         }
 
