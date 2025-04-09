@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\qk-21\\Desktop\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj": {}
+    "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\qk-21\\Desktop\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj": {
+    "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\qk-21\\Desktop\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj",
+        "projectUniqueName": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj",
         "projectName": "LearningHub.Core",
-        "projectPath": "C:\\Users\\qk-21\\Desktop\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj",
+        "projectPath": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Core\\LearningHub.Core.csproj",
         "packagesPath": "C:\\Users\\qk-21\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\qk-21\\Desktop\\Event-Manager-API-LearningHub\\LearningHub.Core\\obj\\",
+        "outputPath": "C:\\Users\\qk-21\\Desktop\\my pranch\\Event-Manager-API-LearningHub\\LearningHub.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -70,6 +70,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.12, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             },
             "Oracle.EntityFrameworkCore": {
               "target": "Package",
