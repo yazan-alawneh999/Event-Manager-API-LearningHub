@@ -128,6 +128,14 @@ namespace LearningHub.Infra.Repository
            
         }
 
+        public  async Task<bool> DeleteUserAsync(int userId)
+        {
+            await using var connection = _dbContext.DbConnection;
+            const string sql = "DELETE FROM Users WHERE UserID = :UserID";
+            var rowsAffected = await connection.ExecuteAsync(sql, new { UserID = userId });
+            return rowsAffected > 0;
+        }
+
         public async Task<User?> ValidateUserAsync(string username, string password)
         {
             await using var connection = _dbContext.DbConnection;
