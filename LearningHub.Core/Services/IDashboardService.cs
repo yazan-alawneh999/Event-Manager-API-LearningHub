@@ -7,6 +7,7 @@ namespace LearningHub.Core.Services;
 public interface IDashboardService
 {
      Task<List<RoleDto>> GetRoles();
-     Task<bool> UpdateUserAsync(decimal userId, UpdateUserProfileDto dto);
+     Task<bool> UpdateProfileAsync(decimal userId, UpdateUserProfileDto dto);
+     Task<bool> UpdateUserAsync(int userId, UpdateUserDto dto);
 
 }

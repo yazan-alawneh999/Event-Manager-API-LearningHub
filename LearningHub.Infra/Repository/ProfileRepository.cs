@@ -31,6 +31,10 @@ namespace LearningHub.Infra.Repository
         /// </summary>
         public async Task<CreateProfileResponse?> CreateProfile(decimal userId, ProfileDto profileDto)
         {
+            try
+            {
+
+           
             await using var connection = _dbContext.DbConnection;
             await connection.OpenAsync();
             await using var transaction = await connection.BeginTransactionAsync();
@@ -68,7 +72,12 @@ namespace LearningHub.Infra.Repository
 
                 await transaction.RollbackAsync();
                 return null;
-            
+            }
+            catch (Exception ex)
+            {
+               
+                return await UpdateProfile(userId, profileDto);
+            }
            
         }
 
@@ -86,7 +95,7 @@ public async Task<CreateProfileResponse?> UpdateProfile(decimal userId, ProfileD
         // ✅ 1. Save Image and Get File Path
         string imagePath = await _utilService.SaveImageAsync(userDto.ImageFile) ?? string.Empty;
 
-        // ✅ 2. Update Profile Details (including ProfileImage)
+        // ✅ 2. Update Profile Details (without RETURNING)
         const string updateProfileSql = @"
             UPDATE Profile  
             SET  
@@ -97,8 +106,7 @@ public async Task<CreateProfileResponse?> UpdateProfile(decimal userId, ProfileD
                 PhoneNumber = :PhoneNumber,
                 ProfileImage = :ProfileImage
             WHERE  
-                UserId = :UserId
-            RETURNING ProfileID INTO :UpdatedID";
+                UserId = :UserId";
 
         var profileParams = new DynamicParameters();
         profileParams.Add(":FirstName", userDto.FirstName, DbType.String);
@@ -106,14 +114,14 @@ public async Task<CreateProfileResponse?> UpdateProfile(decimal userId, ProfileD
         profileParams.Add(":City", userDto.City, DbType.String);
         profileParams.Add(":Age", userDto.Age, DbType.Int32);
         profileParams.Add(":PhoneNumber", userDto.PhoneNumber, DbType.String);
-        profileParams.Add(":ProfileImage", imagePath, DbType.String); // ✅ Image included in one update
+        profileParams.Add(":ProfileImage", imagePath, DbType.String);
         profileParams.Add(":UserId", userId, DbType.Decimal);
-        profileParams.Add(":UpdatedID", dbType: DbType.Decimal, direction: ParameterDirection.Output);
 
         await connection.ExecuteAsync(updateProfileSql, profileParams, transaction);
 
-        
-        var updatedProfileId = profileParams.Get<decimal>(":UpdatedID");
+        // ✅ 3. Fetch Updated Profile ID Manually
+        const string getProfileIdSql = "SELECT ProfileID FROM Profile WHERE UserId = :UserId";
+        var updatedProfileId = await connection.QueryFirstOrDefaultAsync<decimal>(getProfileIdSql, new { UserId = userId }, transaction);
 
         if (updatedProfileId > 0)
         {

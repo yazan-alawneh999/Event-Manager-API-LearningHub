@@ -17,7 +17,12 @@ public class DashboardService:IDashboardService
     }
 
 
-    public async Task<bool> UpdateUserAsync(decimal userId, UpdateUserProfileDto dto)
+    public async Task<bool> UpdateProfileAsync(decimal userId, UpdateUserProfileDto dto)
+    {
+        return await _userRepository.UpdateProfileAsync(userId, dto);
+    }
+
+    public async Task<bool> UpdateUserAsync(int userId, UpdateUserDto dto)
     {
         return await _userRepository.UpdateUserAsync(userId, dto);
     }
@@ -26,4 +31,5 @@ public class DashboardService:IDashboardService
     {
         return await  _roleRepo.GetRoles();
     }
+    
 }
