@@ -63,6 +63,27 @@ public class AuthController:ControllerBase
 
     }
 
+    
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteUser(int id)
+    {
+        try
+        {
+            if (!await _authRepo.UserExistsAsync(id))
+                return NotFound($"User with ID {id} does not exist.");
+
+            var deleted = await _authRepo.DeleteUserAsync(id);
+
+            if (!deleted)
+                return StatusCode(500, $"Failed to delete user with ID {id}.");
+
+            return Ok($"User with ID {id} deleted successfully.");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Server error: {ex.Message}");
+        }
+    }
 
   
 
