@@ -26,7 +26,6 @@ public class ProfileDto
         public string PhoneNumber { get; set; }   
         
         
-        [JsonIgnore]
         public IFormFile ImageFile { get; set; }
     
 }

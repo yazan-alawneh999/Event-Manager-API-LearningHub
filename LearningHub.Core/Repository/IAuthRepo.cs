@@ -15,6 +15,7 @@ public interface IAuthRepo
     Task<bool> RegisterAsync(RegisterDto registerDto); // Insert user
     
     Task<List<User>> GetAllUsersAsync();
+    Task<bool> DeleteUserAsync(int userId);
     Task<User?> ValidateUserAsync(string username, string password);
     
 
